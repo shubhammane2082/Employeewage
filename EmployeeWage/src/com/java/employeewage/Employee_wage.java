@@ -36,8 +36,10 @@ public class Employee_wage {
 			}
 			
 		}
+		
 		employeeWage=empHrs*Emp_rate_per_Hour;
-		System.out.println("Employee Daily wage is "+employeeWage);
+		
+		System.out.println("Employee Daily wage is : "+employeeWage);
 
 	}
 
