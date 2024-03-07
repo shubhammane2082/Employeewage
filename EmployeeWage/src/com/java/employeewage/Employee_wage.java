@@ -15,19 +15,20 @@ public class Employee_wage {
 		
 		Random randomcheck=new Random();
 		int empCheck=randomcheck.nextInt(3);
-
-
-		if(empCheck == Is_Full_Time)
+		
+		switch(empCheck)
 		{
+		  case Is_Full_Time:
 			empHrs=8;
-		}
-		else if(empCheck == Is_Part_Time)
-		{
-			empHrs=4;
-		}
-		else 
-		{
-			empHrs=0; 
+			break;
+			
+		  case Is_Part_Time:
+				empHrs=4;
+				break;
+				
+		  case Is_Absent:
+				empHrs=0;
+				break;
 		}
 		
 		employeeWage=empHrs*Emp_rate_per_Hour;
