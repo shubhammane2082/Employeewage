@@ -8,6 +8,7 @@ public class Employee_wage {
 	final static int Is_Absent=0;
 	final static int Emp_rate_per_Hour=20;
 	final static int NoofWorkingDays=20;
+	final static int maxHrs=100;
 	
 	
 	public static void main(String[] args) 
@@ -15,10 +16,10 @@ public class Employee_wage {
 		int empHrs=0,employeeWage=0;
 		
 		Random randomcheck=new Random();
-		
-		for (int d = 1; d <= NoofWorkingDays; d++) 
+		int day=1;
+		while(day <= NoofWorkingDays && maxHrs > empHrs)
 		{
-			int empCheck=randomcheck.nextInt(3);
+          int empCheck=randomcheck.nextInt(3);
 			
 			switch(empCheck)
 			{
@@ -34,9 +35,9 @@ public class Employee_wage {
 					empHrs+=0;
 					break;
 			}
-			
+
 		}
-		
+		System.out.println(empHrs);
 		employeeWage=empHrs*Emp_rate_per_Hour;
 		
 		System.out.println("Employee Daily wage is : "+employeeWage);
