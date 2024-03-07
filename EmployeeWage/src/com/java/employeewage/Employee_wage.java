@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Employee_wage {
 	final static int Is_Full_Time=1;
-	
+	final static int Is_Part_Time=2;
 	final static int Is_Absent=0;
 	final static int Emp_rate_per_Hour=20;
 	
@@ -14,12 +14,16 @@ public class Employee_wage {
 		int empHrs=0,employeeWage=0;
 		
 		Random randomcheck=new Random();
-		int empCheck=randomcheck.nextInt(2);
+		int empCheck=randomcheck.nextInt(3);
 
 
 		if(empCheck == Is_Full_Time)
 		{
 			empHrs=8;
+		}
+		else if(empCheck == Is_Part_Time)
+		{
+			empHrs=4;
 		}
 		else 
 		{
