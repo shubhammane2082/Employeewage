@@ -7,6 +7,7 @@ public class Employee_wage {
 	final static int Is_Part_Time=2;
 	final static int Is_Absent=0;
 	final static int Emp_rate_per_Hour=20;
+	final static int NoofWorkingDays=20;
 	
 	
 	public static void main(String[] args) 
@@ -14,23 +15,27 @@ public class Employee_wage {
 		int empHrs=0,employeeWage=0;
 		
 		Random randomcheck=new Random();
-		int empCheck=randomcheck.nextInt(3);
 		
-		switch(empCheck)
+		for (int d = 1; d <= NoofWorkingDays; d++) 
 		{
-		  case Is_Full_Time:
-			empHrs=8;
-			break;
+			int empCheck=randomcheck.nextInt(3);
 			
-		  case Is_Part_Time:
-				empHrs=4;
+			switch(empCheck)
+			{
+			  case Is_Full_Time:
+				empHrs += 8;
 				break;
 				
-		  case Is_Absent:
-				empHrs=0;
-				break;
+			  case Is_Part_Time:
+					empHrs +=4;
+					break;
+					
+			  case Is_Absent:
+					empHrs+=0;
+					break;
+			}
+			
 		}
-		
 		employeeWage=empHrs*Emp_rate_per_Hour;
 		System.out.println("Employee Daily wage is "+employeeWage);
 
