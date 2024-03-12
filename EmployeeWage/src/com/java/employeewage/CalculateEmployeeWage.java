@@ -7,17 +7,19 @@ public class CalculateEmployeeWage
 	final static int Is_Full_Time=1;
 	final static int Is_Part_Time=2;
 	final static int Is_Absent=0;
-	final static int Emp_rate_per_Hour=20;
-	final static int NoofWorkingDays=20;
-	final static int maxHrs=100;
 	
-	public static int calculatewage()
+	public static int calculatewage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
 	{
+		System.out.println("Employee Company Name is : "+company);
+		System.out.println("Employee Wage per Hour is : "+Emp_rate_per_Hour);
+		System.out.println("No. of day employee working is : "+NoofWorkingDays);
+		System.out.println("Maximum Hours Employee Works is : "+maxHrs);
+		System.out.println();
         int empHrs=0,employeeWage=0;
 		
 		Random randomcheck=new Random();
 		int day=1;
-		while(day <= NoofWorkingDays && maxHrs > empHrs)
+		while(NoofWorkingDays > day && maxHrs >= empHrs)
 		{
           int empCheck=randomcheck.nextInt(3);
 			
@@ -35,10 +37,11 @@ public class CalculateEmployeeWage
 					empHrs+=0;
 					break;
 			}
-
 		}
-		System.out.println("No. of Hours Employee Work is : "+empHrs);
+//		System.out.println("No. of Hours Employee Work is : "+empHrs);
 		employeeWage=empHrs*Emp_rate_per_Hour;
+		System.out.println(company+" Employee Wage Per Month is : "+employeeWage);
+		System.out.println();
 		return employeeWage;
 	}
 
