@@ -13,35 +13,8 @@ public class Employee_wage {
 	
 	public static void main(String[] args) 
 	{
-		int empHrs=0,employeeWage=0;
-		
-		Random randomcheck=new Random();
-		int day=1;
-		while(day <= NoofWorkingDays && maxHrs > empHrs)
-		{
-          int empCheck=randomcheck.nextInt(3);
-			
-			switch(empCheck)
-			{
-			  case Is_Full_Time:
-				empHrs += 8;
-				break;
-				
-			  case Is_Part_Time:
-					empHrs +=4;
-					break;
-					
-			  case Is_Absent:
-					empHrs+=0;
-					break;
-			}
-
-		}
-		System.out.println(empHrs);
-		employeeWage=empHrs*Emp_rate_per_Hour;
-		
-		System.out.println("Employee Daily wage is : "+employeeWage);
-
+		CalculateEmployeeWage calculateEmployeeWage=new CalculateEmployeeWage();
+		System.out.println("Employee Daily wage is : "+calculateEmployeeWage.calculatewage());
 	}
 
 }
