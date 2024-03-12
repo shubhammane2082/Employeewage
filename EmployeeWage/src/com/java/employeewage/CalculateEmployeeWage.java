@@ -8,7 +8,21 @@ public class CalculateEmployeeWage
 	final static int Is_Part_Time=2;
 	final static int Is_Absent=0;
 	
-	public static int calculatewage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
+	private String company;
+	private int Emp_rate_per_Hour;
+	private int NoofWorkingDays;
+	private int maxHrs;
+	
+	public CalculateEmployeeWage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
+	{
+		this.company=company;
+		this.Emp_rate_per_Hour=Emp_rate_per_Hour;
+		this.NoofWorkingDays=NoofWorkingDays;
+		this.maxHrs=maxHrs;
+	}
+	
+	
+	public int calculatewage()
 	{
 		System.out.println("Employee Company Name is : "+company);
 		System.out.println("Employee Wage per Hour is : "+Emp_rate_per_Hour);
@@ -21,7 +35,7 @@ public class CalculateEmployeeWage
 		int day=1;
 		while(NoofWorkingDays > day && maxHrs >= empHrs)
 		{
-          int empCheck=randomcheck.nextInt(3);
+           int empCheck=randomcheck.nextInt(3);
 			
 			switch(empCheck)
 			{

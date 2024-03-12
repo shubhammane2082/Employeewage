@@ -6,12 +6,12 @@ public class Employee_wage
 {
 	public static void main(String[] args) 
 	{
-		CalculateEmployeeWage calculateEmployeeWage=new CalculateEmployeeWage();
-		int TCSemployeeWage=CalculateEmployeeWage.calculatewage("TCS", 120, 20, 120);
-		int WiproemployeeWage=CalculateEmployeeWage.calculatewage("Wipro", 150, 26, 130);
-		int CapgemployeeWage=CalculateEmployeeWage.calculatewage("Capgemini", 180, 30, 150);
+		CalculateEmployeeWage TCSEmployeeWage=new CalculateEmployeeWage("TCS", 120, 20, 120);
+		TCSEmployeeWage.calculatewage();
 		
-
+		CalculateEmployeeWage wiproEmployeeWage=new CalculateEmployeeWage("Wipro", 140, 25, 140);
+		wiproEmployeeWage.calculatewage();
+		
 	}
 
 }
