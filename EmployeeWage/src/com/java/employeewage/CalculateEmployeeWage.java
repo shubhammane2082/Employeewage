@@ -8,33 +8,33 @@ public class CalculateEmployeeWage
 	final static int Is_Part_Time=2;
 	final static int Is_Absent=0;
 	
-	private String company;
-	private int Emp_rate_per_Hour;
-	private int NoofWorkingDays;
-	private int maxHrs;
+	int numofCompany=0;
+	CompanyEmployeeWage[] CompanyEmployeeWageArray;
 	
-	public CalculateEmployeeWage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
+	public CalculateEmployeeWage()
 	{
-		this.company=company;
-		this.Emp_rate_per_Hour=Emp_rate_per_Hour;
-		this.NoofWorkingDays=NoofWorkingDays;
-		this.maxHrs=maxHrs;
+		CompanyEmployeeWageArray=new CompanyEmployeeWage[5];
+	}
+	public void addemployeeWage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
+	{
+		CompanyEmployeeWageArray[numofCompany++]=new CompanyEmployeeWage(company, Emp_rate_per_Hour, NoofWorkingDays, maxHrs);
 	}
 	
-	
-	public int calculatewage()
+	public void calculateEmployeewage()
 	{
-		System.out.println("Employee Company Name is : "+company);
-		System.out.println("Employee Wage per Hour is : "+Emp_rate_per_Hour);
-		System.out.println("No. of day employee working is : "+NoofWorkingDays);
-		System.out.println("Maximum Hours Employee Works is : "+maxHrs);
-		System.out.println();
-        int empHrs=0,employeeWage=0;
-		
-		Random randomcheck=new Random();
-		int day=1;
-		while(NoofWorkingDays > day && maxHrs >= empHrs)
+		for (int i = 0; i < numofCompany; i++) 
 		{
+			CompanyEmployeeWageArray[i].setempWage(this.calculatewage(CompanyEmployeeWageArray[i]));
+			System.out.println(CompanyEmployeeWageArray[i]);
+		}
+	}
+	public int calculatewage(CompanyEmployeeWage companyEmployeeWage)
+	{
+        int empHrs=0,totalempHrs=0,totalworkingday=0;
+		Random randomcheck=new Random();
+		while( companyEmployeeWage.NoofWorkingDays >= totalworkingday &&  companyEmployeeWage.maxHrs >= empHrs)
+		{
+			totalworkingday++;
            int empCheck=randomcheck.nextInt(3);
 			
 			switch(empCheck)
@@ -51,12 +51,9 @@ public class CalculateEmployeeWage
 					empHrs+=0;
 					break;
 			}
+			totalempHrs+=empHrs;
 		}
-//		System.out.println("No. of Hours Employee Work is : "+empHrs);
-		employeeWage=empHrs*Emp_rate_per_Hour;
-		System.out.println(company+" Employee Wage Per Month is : "+employeeWage);
-		System.out.println();
-		return employeeWage;
+		return totalempHrs*companyEmployeeWage.Emp_rate_per_Hour;
 	}
 
 }
