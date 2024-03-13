@@ -2,7 +2,7 @@ package com.java.employeewage;
 
 import java.util.Random;
 
-public class CalculateEmployeeWage 
+public class CalculateEmployeeWage implements CalculteWageInterface
 {
 	final static int Is_Full_Time=1;
 	final static int Is_Part_Time=2;
@@ -15,11 +15,14 @@ public class CalculateEmployeeWage
 	{
 		CompanyEmployeeWageArray=new CompanyEmployeeWage[5];
 	}
+	
+	@Override
 	public void addemployeeWage(String company, int Emp_rate_per_Hour, int NoofWorkingDays, int maxHrs)
 	{
 		CompanyEmployeeWageArray[numofCompany++]=new CompanyEmployeeWage(company, Emp_rate_per_Hour, NoofWorkingDays, maxHrs);
 	}
 	
+	@Override
 	public void calculateEmployeewage()
 	{
 		for (int i = 0; i < numofCompany; i++) 
@@ -28,6 +31,8 @@ public class CalculateEmployeeWage
 			System.out.println(CompanyEmployeeWageArray[i]);
 		}
 	}
+	
+	@Override
 	public int calculatewage(CompanyEmployeeWage companyEmployeeWage)
 	{
         int empHrs=0,totalempHrs=0,totalworkingday=0;
