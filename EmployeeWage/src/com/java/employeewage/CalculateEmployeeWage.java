@@ -1,6 +1,8 @@
 package com.java.employeewage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class CalculateEmployeeWage implements CalculteWageInterface
@@ -10,10 +12,12 @@ public class CalculateEmployeeWage implements CalculteWageInterface
 	final static int Is_Absent=0;
 	
 	public ArrayList<CompanyEmployeeWage> CompanyEmployeeWageList;
+	public Map<String, CompanyEmployeeWage> CompanyEmployeeWageMap;
 	
 	public CalculateEmployeeWage()
 	{
 		CompanyEmployeeWageList=new ArrayList<>();
+		CompanyEmployeeWageMap=new HashMap<>();
 	}
 	
 	@Override
@@ -21,6 +25,7 @@ public class CalculateEmployeeWage implements CalculteWageInterface
 	{
 		CompanyEmployeeWage companyemployeeWage=new  CompanyEmployeeWage(company, Emp_rate_per_Hour, NoofWorkingDays, maxHrs);
 		CompanyEmployeeWageList.add(companyemployeeWage);
+		CompanyEmployeeWageMap.put(company, companyemployeeWage);
 	}
 	
 	@Override
@@ -33,13 +38,13 @@ public class CalculateEmployeeWage implements CalculteWageInterface
 			System.out.println(companyemployeeWage);
 		}
 	}
-	
 	@Override
 	public int calculatewage(CompanyEmployeeWage companyEmployeeWage)
 	{
         int empHrs=0,totalempHrs=0,totalworkingday=0;
 		Random randomcheck=new Random();
-		while( companyEmployeeWage.NoofWorkingDays >= totalworkingday &&  companyEmployeeWage.maxHrs >= empHrs)
+		
+		while( companyEmployeeWage.NoofWorkingDays >= totalworkingday &&  companyEmployeeWage.maxHrs >= totalempHrs)
 		{
 			totalworkingday++;
            int empCheck=randomcheck.nextInt(3);
@@ -59,8 +64,8 @@ public class CalculateEmployeeWage implements CalculteWageInterface
 					break;
 			}
 			totalempHrs+=empHrs;
+			System.out.println("After Day "+totalworkingday+" Employee Daily Wage is : "+totalempHrs*companyEmployeeWage.Emp_rate_per_Hour);
 		}
 		return totalempHrs*companyEmployeeWage.Emp_rate_per_Hour;
 	}
-
 }
